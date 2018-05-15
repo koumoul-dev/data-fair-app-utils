@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 const router = module.exports = express.Router()
 router.use(bodyParser.json({limit: '1000kb'}))
 
-const configDir = path.join(__dirname, '../config-store')
+const configDir = './config-store'
 fs.ensureDirSync(configDir)
 
 router.get('/:configId', (req, res, next) => {
