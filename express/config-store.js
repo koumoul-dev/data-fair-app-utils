@@ -15,6 +15,7 @@ fs.ensureDirSync(configDir)
 router.get('/:configId', (req, res, next) => {
   try {
     const content = fs.readFileSync(path.join(configDir, req.params.configId + '.json'), 'utf-8')
+    content.userPermissions = ['writeConfig']
     res.status(200).send(JSON.parse(content))
   } catch (err) {
     res.status(200).send({})
