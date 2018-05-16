@@ -24,7 +24,7 @@ router.get('', (req, res, next) => {
 
 router.get('/config', (req, res, next) => {
   try {
-    const content = fs.readFileSync(path.join(configDir, req.params.configId + '.json'), 'utf-8')
+    const content = fs.readFileSync(path.join(configDir, 'test.json'), 'utf-8')
     res.status(200).send(JSON.parse(content))
   } catch (err) {
     res.status(200).send({})
@@ -33,6 +33,6 @@ router.get('/config', (req, res, next) => {
 
 router.put('/config', (req, res, next) => {
   const content = JSON.stringify(req.body, null, 2)
-  fs.writeFileSync(path.join(configDir, req.params.configId + '.json'), content)
+  fs.writeFileSync(path.join(configDir, 'test.json'), content)
   res.status(200).send(req.body)
 })
